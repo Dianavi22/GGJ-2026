@@ -8,12 +8,12 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - ParticulesSystem
   - Water
   - UI
-  - 
-  - 
-  - 
+  - NavFloor
+  - NavWalls
+  - PostProcess
   - 
   - 
   - 
