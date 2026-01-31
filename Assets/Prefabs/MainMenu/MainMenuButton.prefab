@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7490198, g: 0.7490198, b: 0.7490198, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 3990805413783555902}
   - component: {fileID: 2532885329204067544}
   - component: {fileID: 5401839862820771027}
+  - component: {fileID: 3935775736767075022}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -201,7 +202,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: QUIT
+  m_text: PLAY
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0537a6b4098f0534b9b1def7ac1ddb96, type: 2}
   m_sharedMaterial: {fileID: -657571826710202995, guid: 0537a6b4098f0534b9b1def7ac1ddb96, type: 2}
@@ -300,3 +301,26 @@ MonoBehaviour:
         m_Calls: []
     overrideTagEffects: 0
   updatesPerSecond: 30
+--- !u!114 &3935775736767075022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6193078166285980393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da81f618eee6b3343946d8b4e225c6be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 0}
+  normalText: PLAY
+  glitchText:
+  - P??Y
+  - pLaY
+  - $#!!
+  - PL#Y
+  minTimeBetweenGlitch: 1
+  maxTimeBetweenGlitch: 3
+  minGlitchDuration: 0.05
+  maxGlitchDuration: 0.2

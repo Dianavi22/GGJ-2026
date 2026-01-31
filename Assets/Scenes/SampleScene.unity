@@ -324,6 +324,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2532885329204067544, guid: ce8ca5996800f994183970555f9d5b55, type: 3}
+      propertyPath: m_text
+      value: QUIT
+      objectReference: {fileID: 0}
     - target: {fileID: 2673804628008895872, guid: ce8ca5996800f994183970555f9d5b55, type: 3}
       propertyPath: m_Navigation.m_Mode
       value: 4
@@ -348,6 +352,22 @@ PrefabInstance:
       propertyPath: ButtonParts
       value: 
       objectReference: {fileID: 1109155005}
+    - target: {fileID: 3935775736767075022, guid: ce8ca5996800f994183970555f9d5b55, type: 3}
+      propertyPath: glitchText.Array.data[0]
+      value: '@@@@'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3935775736767075022, guid: ce8ca5996800f994183970555f9d5b55, type: 3}
+      propertyPath: glitchText.Array.data[1]
+      value: QuiT
+      objectReference: {fileID: 0}
+    - target: {fileID: 3935775736767075022, guid: ce8ca5996800f994183970555f9d5b55, type: 3}
+      propertyPath: glitchText.Array.data[2]
+      value: '%%!T'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3935775736767075022, guid: ce8ca5996800f994183970555f9d5b55, type: 3}
+      propertyPath: glitchText.Array.data[3]
+      value: q#~T
+      objectReference: {fileID: 0}
     - target: {fileID: 5067402151526706951, guid: ce8ca5996800f994183970555f9d5b55, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -515,6 +535,22 @@ PrefabInstance:
       propertyPath: ButtonParts
       value: 
       objectReference: {fileID: 161951228}
+    - target: {fileID: 3935775736767075022, guid: ce8ca5996800f994183970555f9d5b55, type: 3}
+      propertyPath: glitchText.Array.data[0]
+      value: CRE\\\
+      objectReference: {fileID: 0}
+    - target: {fileID: 3935775736767075022, guid: ce8ca5996800f994183970555f9d5b55, type: 3}
+      propertyPath: glitchText.Array.data[1]
+      value: CrEditS
+      objectReference: {fileID: 0}
+    - target: {fileID: 3935775736767075022, guid: ce8ca5996800f994183970555f9d5b55, type: 3}
+      propertyPath: glitchText.Array.data[2]
+      value: CR###TS
+      objectReference: {fileID: 0}
+    - target: {fileID: 3935775736767075022, guid: ce8ca5996800f994183970555f9d5b55, type: 3}
+      propertyPath: glitchText.Array.data[3]
+      value: C%$DI&s
+      objectReference: {fileID: 0}
     - target: {fileID: 5067402151526706951, guid: ce8ca5996800f994183970555f9d5b55, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -866,6 +902,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5773019855846782896, guid: ef1205be582c687409592642f4556eb9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6962591874750060888, guid: ef1205be582c687409592642f4556eb9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 81.6
@@ -1013,7 +1053,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2532885329204067544, guid: ce8ca5996800f994183970555f9d5b55, type: 3}
       propertyPath: m_text
-      value: OPTIONS
+      value: INFOS
       objectReference: {fileID: 0}
     - target: {fileID: 2673804628008895872, guid: ce8ca5996800f994183970555f9d5b55, type: 3}
       propertyPath: m_Navigation.m_Mode
@@ -1039,6 +1079,22 @@ PrefabInstance:
       propertyPath: ButtonParts
       value: 
       objectReference: {fileID: 1887496188}
+    - target: {fileID: 3935775736767075022, guid: ce8ca5996800f994183970555f9d5b55, type: 3}
+      propertyPath: glitchText.Array.data[0]
+      value: '!$FOs'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3935775736767075022, guid: ce8ca5996800f994183970555f9d5b55, type: 3}
+      propertyPath: glitchText.Array.data[1]
+      value: $$$$
+      objectReference: {fileID: 0}
+    - target: {fileID: 3935775736767075022, guid: ce8ca5996800f994183970555f9d5b55, type: 3}
+      propertyPath: glitchText.Array.data[2]
+      value: '%nf0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3935775736767075022, guid: ce8ca5996800f994183970555f9d5b55, type: 3}
+      propertyPath: glitchText.Array.data[3]
+      value: 1NF0
+      objectReference: {fileID: 0}
     - target: {fileID: 5067402151526706951, guid: ce8ca5996800f994183970555f9d5b55, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -1506,14 +1562,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2532885329204067544, guid: ce8ca5996800f994183970555f9d5b55, type: 3}
-      propertyPath: m_text
-      value: PLAY
-      objectReference: {fileID: 0}
-    - target: {fileID: 2673804628008895872, guid: ce8ca5996800f994183970555f9d5b55, type: 3}
-      propertyPath: m_Navigation.m_Mode
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 2673804628008895872, guid: ce8ca5996800f994183970555f9d5b55, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
@@ -1534,22 +1582,6 @@ PrefabInstance:
       propertyPath: ButtonParts
       value: 
       objectReference: {fileID: 1424943270}
-    - target: {fileID: 5067402151526706951, guid: ce8ca5996800f994183970555f9d5b55, type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067402151526706951, guid: ce8ca5996800f994183970555f9d5b55, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067402151526706951, guid: ce8ca5996800f994183970555f9d5b55, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067402151526706951, guid: ce8ca5996800f994183970555f9d5b55, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
