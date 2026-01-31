@@ -1,5 +1,39 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7579318478121427359
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8ba57450bafe964bb96f4927df43410, type: 3}
+  m_Name: CRT
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  m_FillColor1:
+    overrideState: 1
+    value: 9.11
+  m_FillColor2:
+    overrideState: 1
+    value: 5.81
+  m_Contrast:
+    overrideState: 1
+    value: 0.08
+  m_Brightness:
+    overrideState: 1
+    value: 1.49
+  m_ScanLinesColor:
+    overrideState: 1
+    value: {r: 0.86415094, g: 0.13532923, b: 0.13532923, a: 1}
+  m_ScanLinesInterval:
+    overrideState: 1
+    value: 12
 --- !u!114 &-4639137470512745043
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -61,3 +95,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
   - {fileID: -4639137470512745043}
+  - {fileID: -7579318478121427359}

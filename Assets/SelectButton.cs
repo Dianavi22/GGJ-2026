@@ -3,7 +3,8 @@ using UnityEngine.EventSystems;
 
 public class SelectButton : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
-    [SerializeField] GameObject ButtonParts;
+    [SerializeField] PlayButtonPart ButtonParts;
+
     public void OnSelect(BaseEventData eventData)
     {
         OnButtonSelected();
@@ -16,12 +17,12 @@ public class SelectButton : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     void OnButtonSelected()
     {
-        ButtonParts.SetActive(true);
+        ButtonParts.ActivePartsButton();
     }
 
     void OnButtonDeselected()
     {
-        ButtonParts.SetActive(false);
+        ButtonParts.DisablePartsButton();
 
     }
 }

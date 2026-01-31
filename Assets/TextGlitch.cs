@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 public class TextGlitch : MonoBehaviour
 {
-    public TMP_Text text;
+    private TMP_Text text;
 
-    [SerializeField] string normalText;
+     string normalText;
 
     [SerializeField] List<string> glitchText = new List<string>();
 

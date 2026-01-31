@@ -10,7 +10,21 @@ public class PlayButtonPart : MonoBehaviour
     {
         _partButton1.gameObject.SetActive(true);
         _partButton2.gameObject.SetActive(true);
+        DisablePartsButton();
     }
+
+    public void ActivePartsButton()
+    {
+        _partButton2.GetComponent<ParticleSystem>().GetComponent<Renderer>().enabled = true;
+        _partButton1.GetComponent<ParticleSystem>().GetComponent<Renderer>().enabled = true ;
+    }
+
+    public void DisablePartsButton()
+    {
+        _partButton2.GetComponent<ParticleSystem>().GetComponent<Renderer>().enabled = false;
+        _partButton1.GetComponent<ParticleSystem>().GetComponent<Renderer>().enabled = false;
+    }
+
 
     void Update()
     {
