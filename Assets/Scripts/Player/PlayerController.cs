@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -16,18 +14,8 @@ public class PlayerController : MonoBehaviour
     _rigidbody = GetComponent<Rigidbody>();
   }
 
-
   private void Update() {
-    float space = Input.GetAxisRaw("Jump");
-
-    if(space == 1 && !_lookingBehind) {
-      transform.RotateAround(transform.position, Vector3.up, Mathf.Lerp(0, -180, Time.deltaTime)); 
-      _lookingBehind = !_lookingBehind;
-    } else if (space == 0 && _lookingBehind) {
-
-      transform.RotateAround(transform.position, Vector3.up, 180); 
-      _lookingBehind = !_lookingBehind;
-    }
+    _lookingBehind = Input.GetAxisRaw("Jump") == 1;
   }
 
   private void FixedUpdate() {
@@ -36,11 +24,15 @@ public class PlayerController : MonoBehaviour
     Vector3 moveVect = _speed * Time.fixedDeltaTime * movementDir;
     _rigidbody.MovePosition(_rigidbody.position + moveVect);
 
-    if (movementDir != Vector3.zero && !_lookingBehind) Rotate(movementDir);
+    if (movementDir != Vector3.zero) Rotate(movementDir);
   }
 
 
   private void Rotate(Vector3 direction) {
+    if(_lookingBehind) {
+      direction = -direction;
+    }
+
     direction += transform.position;
 
     Quaternion targetRotation = Quaternion.LookRotation(direction - transform.position);
