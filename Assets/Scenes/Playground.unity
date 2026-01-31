@@ -7564,9 +7564,9 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.016666668
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 9d8fc37e27bae794c9e197943d951004, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 93bcc520fcc16cf439a85c3bca7f20ea, type: 2}
   m_BuildHeightMesh: 0
 --- !u!114 &1314879261
 MonoBehaviour:
@@ -7577,9 +7577,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1314879257}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e614c35ddefa7264094d0609fd7fd89a, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_AgentTypeID: -334000983
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.016666668
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: f54e30d593fdd624983c10a4278ef005, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1 &1327975204
 GameObject:
   m_ObjectHideFlags: 0
@@ -9323,7 +9342,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2471499203535919590, guid: 0eb87ed171bc2d149ba769bf14142162, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.178
+      value: 0.132
       objectReference: {fileID: 0}
     - target: {fileID: 2471499203535919590, guid: 0eb87ed171bc2d149ba769bf14142162, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9371,8 +9390,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6659875578235689654, guid: 0eb87ed171bc2d149ba769bf14142162, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8498954856099347435, guid: 0eb87ed171bc2d149ba769bf14142162, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 266004784}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10772,7 +10795,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1022835491410812534, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1438004922800123177, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
       propertyPath: m_LocalScale.x
@@ -10792,7 +10815,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1438004922800123177, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.178
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 1438004922800123177, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10832,6 +10855,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2101831587998452010, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
       propertyPath: _playerTarget
+      value: 
+      objectReference: {fileID: 266004784}
+    - target: {fileID: 9200464450819148821, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
+      propertyPath: _player
       value: 
       objectReference: {fileID: 266004784}
     m_RemovedComponents: []

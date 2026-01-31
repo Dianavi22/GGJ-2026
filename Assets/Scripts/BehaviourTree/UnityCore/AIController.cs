@@ -6,9 +6,11 @@ using BehaviourTree.Core;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace BehaviourTree.UnityCore {
+namespace BehaviourTree.UnityCore
+{
     [RequireComponent(typeof(NavMeshAgent))]
-    public abstract class AIController : MonoBehaviour {
+    public abstract class AIController : MonoBehaviour
+    {
         [Header("AI Controller")]
         [SerializeField, Tooltip("Range of the melee (in m, used as Stopping Distance as well)")] private float _meleeRange;
 
@@ -20,7 +22,7 @@ namespace BehaviourTree.UnityCore {
         private bool _evaluateTree = false, _canMove = false;
         private Node _root;
         private NavMeshAgent _agent;
-        protected Transform _player;
+        [SerializeField] protected Transform _player;
         protected Vector3 _defaultPosition;
         private readonly Dictionary<string, float> _cooldowns = new();
         private List<Collider2D> _colliders;
@@ -32,7 +34,8 @@ namespace BehaviourTree.UnityCore {
         #endregion
 
         #region Unity Callbacks
-        protected virtual void Awake() {
+        protected virtual void Awake()
+        {
             _defaultPosition = transform.position;
 
             _agent = GetComponent<NavMeshAgent>();
@@ -46,37 +49,49 @@ namespace BehaviourTree.UnityCore {
             _agent.stoppingDistance = _meleeRange;
         }
 
-        protected virtual void Start() {
+        protected virtual void Start()
+        {
             Reset();
         }
 
-        protected virtual void Update() {
-            if ((!_shouldOverrideTreeEvaluation && _evaluateTree) || (_shouldOverrideTreeEvaluation && _evaluateTreeOverride)) {
+        protected virtual void Update()
+        {
+            if ((!_shouldOverrideTreeEvaluation && _evaluateTree) || (_shouldOverrideTreeEvaluation && _evaluateTreeOverride))
+            {
                 _root.Evaluate();
             }
         }
 
-        protected virtual void FixedUpdate() {
-            if (_canMove && _player != null) {
+        protected virtual void FixedUpdate()
+        {
+            if (_canMove && _player != null)
+            {
                 _agent.destination = _player.position; // Moving toward the player
             }
 
             // Decrementing cooldowns
-            for (int i = 0; i < _cooldowns.Count; i++) {
+            for (int i = 0; i < _cooldowns.Count; i++)
+            {
                 KeyValuePair<string, float> a = _cooldowns.ElementAt(i);
                 _cooldowns[a.Key] = a.Value - Time.deltaTime;
             }
         }
 
-        protected virtual void OnTriggerEnter2D(Collider2D other) {
-            // This means the player entered the detection range
-            if (other.TryGetComponent(out PlayerController player)) {
-                _player = player.transform;
-            }
+        protected virtual void OnTriggerEnter2D(Collider2D other)
+        {
+
+            // Here TODO if other trygetcomponent visionCone
+            //     if (other.TryGetComponent(out PlayerController player))
+            //     {
+            //         _player = player.transform;
+            //     }
+
         }
 
-        private void OnDrawGizmos() {
-            if (!_showMeleeRangeGizmos) {
+        private void OnDrawGizmos()
+        {
+            if (!_showMeleeRangeGizmos)
+            {
                 return;
             }
 
@@ -91,47 +106,56 @@ namespace BehaviourTree.UnityCore {
 
         protected virtual void OnMove() { }
 
-        public virtual void OnDeath() {
+        public virtual void OnDeath()
+        {
             gameObject.SetActive(false);
         }
 
-        protected virtual void Reset() {
+        protected virtual void Reset()
+        {
             transform.position = _defaultPosition;
             StopAllCoroutines();
 
-            for (int i = 0; i < _cooldowns.Count; i++) {
+            for (int i = 0; i < _cooldowns.Count; i++)
+            {
                 _cooldowns.Values.ToList()[i] = 0;
             }
         }
         #endregion
-        
+
         protected void SetCooldown(string key, float cooldown) => _cooldowns[key] = cooldown;
         protected void DisableTree() => _evaluateTree = false;
         protected void EnableTree() => _evaluateTree = true;
         public Coroutine SetIdleState(Action onComplete) => StartCoroutine(IdleCoroutine(onComplete));
         public Coroutine SetMovingState(Action onComplete) => StartCoroutine(MoveCoroutine(onComplete));
 
-        protected IEnumerator MoveCoroutine(Action onComplete) {
+        protected IEnumerator MoveCoroutine(Action onComplete)
+        {
             _canMove = true;
             OnMove();
-            yield return new WaitForSeconds(UnityEngine.Random.Range(1, 2.5f));
+            // yield return new WaitForSeconds(UnityEngine.Random.Range(1, 2.5f));
+            yield return new WaitForSeconds(UnityEngine.Random.Range(0.1f, .5f));
             onComplete?.Invoke();
             _canMove = false;
         }
 
-        public bool IsOnCooldown(string key) {
-            if (_cooldowns.TryGetValue(key, out float cd)) {
+        public bool IsOnCooldown(string key)
+        {
+            if (_cooldowns.TryGetValue(key, out float cd))
+            {
                 return 0 < cd;
             }
 
             return false;
         }
 
-        protected void DisableCollision() {
+        protected void DisableCollision()
+        {
             _colliders.ForEach(collider => collider.enabled = false);
         }
 
-        protected void EnableCollision() {
+        protected void EnableCollision()
+        {
             _colliders.ForEach(collider => collider.enabled = true);
         }
     }
