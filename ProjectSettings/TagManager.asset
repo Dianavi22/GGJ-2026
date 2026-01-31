@@ -11,8 +11,8 @@ TagManager:
   - ParticulesSystem
   - Water
   - UI
-  - 
-  - 
+  - NavFloor
+  - NavWalls
   - PostProcess
   - 
   - 
