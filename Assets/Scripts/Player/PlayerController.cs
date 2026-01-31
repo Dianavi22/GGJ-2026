@@ -21,10 +21,10 @@ public class PlayerController : MonoBehaviour
     float space = Input.GetAxisRaw("Jump");
 
     if(space == 1 && !_lookingBehind) {
-      transform.RotateAround(transform.position, Vector3.up, -180); 
+      transform.RotateAround(transform.position, Vector3.up, Mathf.Lerp(0, -180, Time.deltaTime)); 
       _lookingBehind = !_lookingBehind;
     } else if (space == 0 && _lookingBehind) {
-      
+
       transform.RotateAround(transform.position, Vector3.up, 180); 
       _lookingBehind = !_lookingBehind;
     }
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
   private void Rotate(Vector3 direction) {
     direction += transform.position;
-    
+
     Quaternion targetRotation = Quaternion.LookRotation(direction - transform.position);
     transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _interpolationSpeed);
   }
