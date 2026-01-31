@@ -31,4 +31,15 @@ public class MaaskExpressons : MonoBehaviour
         }
 
     }
+
+    public void ResetFace()
+    {
+        _chockedFace.SetActive(false);
+
+        for (int i = 0; i < _agroFace.Count; i++)
+        {
+            _agroFace[i].SetActive(false);
+        }
+
+    }
 }
