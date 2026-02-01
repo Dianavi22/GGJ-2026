@@ -1,9 +1,9 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine;
 using Teagher.Rendering.PostProcessEffects;
 using UnityEngine.SceneManagement;
-using UnityEngine.InputSystem;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -78,13 +78,9 @@ public class MainMenuManager : MonoBehaviour
 
         if (_isInMenuButNotMainMenu)
         {
-            if (_infoScreen.activeSelf)
-            {
-                if(Input.GetKeyUp(KeyCode.Escape) || Gamepad.current.bButton.isPressed) { ShowMainMenu();}
-            }
-            else
-            {
-                if(Input.anyKey || Gamepad.current.bButton.isPressed) { ShowMainMenu(); }
+            if (Input.anyKey && _creditsScreen.activeSelf == true) { ShowMainMenu(); }
+            if (Input.GetKeyDown(KeyCode.Escape) && _infoScreen.activeSelf == true)
+            {  ShowMainMenu();
             }
         }
     }
