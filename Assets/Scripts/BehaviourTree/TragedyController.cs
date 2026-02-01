@@ -3,7 +3,9 @@ using System.Collections;
 using BehaviourTree.Core;
 using BehaviourTree.Leaves;
 using BehaviourTree.UnityCore;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Entities.Enemy
 {
@@ -15,7 +17,7 @@ namespace Entities.Enemy
       _canMove = true;
       yield return new WaitForSeconds(4f); 
       onComplete?.Invoke();
-      print("GAME OVER");
+      SceneManager.LoadScene("GameOverSceneBlue");
       _canMove = false;
     }
   }

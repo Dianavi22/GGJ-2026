@@ -4,6 +4,8 @@ using UnityEngine.Rendering.PostProcessing;
 using UnityEngine;
 using Teagher.Rendering.PostProcessEffects;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+using System;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -14,6 +16,8 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] GameObject _creditsScreen;
     [SerializeField] GameObject _infoScreen;
     public CloseScreenEffect _cse;
+
+    [SerializeField] AudioManager _audioManager;
 
 
     public PostProcessVolume volume;
@@ -35,19 +39,25 @@ public class MainMenuManager : MonoBehaviour
         }
     }
 
-    public void CloseScreenMenu()
+    public void CloseScreenMenu(Action after)
     {
         if (volume.profile.TryGetSettings(out screenFading))
         {
             screenFading.blend.value = 0f;
             isFadingClose = true;
+
+            after();
         }
     }
 
     public void Play()
     {
-        _cse.StartPlay();
-        SceneManager.LoadScene("KFMAP");
+        Action after = () =>
+        {
+            StartCoroutine(LauchSceneAfterWait());
+        };
+
+        _cse.StartPlay(after);
     }
 
     void Update()
@@ -78,17 +88,27 @@ public class MainMenuManager : MonoBehaviour
 
         if (_isInMenuButNotMainMenu)
         {
-            if (Input.anyKey && _creditsScreen.activeSelf == true) { ShowMainMenu(); }
-            if (Input.GetKeyDown(KeyCode.Escape) && _infoScreen.activeSelf == true)
-            {  ShowMainMenu();
+            if (_infoScreen.activeSelf)
+            {
+                if(Input.GetKeyUp(KeyCode.Escape) || Gamepad.current.bButton.wasPressedThisFrame) { ShowMainMenu();}
+            }
+            else
+            {
+                if(Input.anyKey || Gamepad.current.bButton.wasPressedThisFrame) { ShowMainMenu(); }
             }
         }
+    }
+
+    public IEnumerator LauchSceneAfterWait()
+    {
+        yield return new WaitForSeconds(.5f);
+        SceneManager.LoadScene("PlaygroundKF");
     }
 
 
     public IEnumerator TransitionScreenMenu()
     {
-
+        _audioManager.PlayGlitchTransition();
         _glitchEffect.SetActive(true);
         yield return new WaitForSeconds(0.2f);
         _glitchEffect.SetActive(false);

@@ -41,9 +41,8 @@ namespace Entities.Enemy
     }
 
     protected override void Update() {
-      base.Update();
-
       if(_state == MaskState.feared) return;
+      base.Update();
 
       _state = IsPlayerInAggroRange ? MaskState.aggroed : MaskState.roaming;
 
@@ -51,6 +50,7 @@ namespace Entities.Enemy
 
       if(IsSeen || Input.GetKeyDown(KeyCode.L)) {
         StopAllCoroutines();
+        StartCoroutine(FleeCoroutine(() => base.ResetRoot()));
         _state = MaskState.feared;
       }
     }

@@ -31,6 +31,10 @@ namespace BehaviourTree.UnityCore
         private readonly Dictionary<string, float> _cooldowns = new();
         private List<Collider> _colliders;
 
+        protected void ResetRoot() {
+          _root.Reset(); 
+        }
+
         #region Getters
         public bool IsPlayerInAggroRange => _player != null && Vector3.Distance(transform.position, _player.transform.position) < _aggroRange;
         public bool AllOnCooldown => _cooldowns.All((e) => 0 < e.Value) && _cooldowns.Count != 0;

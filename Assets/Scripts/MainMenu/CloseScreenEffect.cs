@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 using Teagher.Rendering.PostProcessEffects;
+using System;
+using UnityEngine.SceneManagement;
 
 public class CloseScreenEffect : MonoBehaviour
 {
@@ -19,13 +21,17 @@ public class CloseScreenEffect : MonoBehaviour
     public PostProcessVolume volume;
     private VideoGlitch videoGlitch;
 
+    [SerializeField] AudioManager _audioManager;
+
     void Start()
     {
     }
-    public void StartPlay()
+    public void StartPlay(Action after)
     {
-        StartCoroutine(ShowDeadPixel());
+        StartCoroutine(ShowDeadPixel(after));
+        _audioManager.PlayMegaGlitchTransition();
     }
+
     void Update()
     {
         if (!_isPlay) return;
@@ -46,13 +52,10 @@ public class CloseScreenEffect : MonoBehaviour
         }
     }
 
-    public void Close()
+    public void Close(Action after)
     {
-       
-            _mmm.CloseScreenMenu();
-
-       
-
+       _mmm.CloseScreenMenu(after);
+        _audioManager.PlayTVOffTransition();
     }
 
     bool AllGlitchValuesReached()
@@ -68,7 +71,7 @@ public class CloseScreenEffect : MonoBehaviour
     }
 
 
-    public IEnumerator ShowDeadPixel()
+    public IEnumerator ShowDeadPixel(Action after)
     {
 
         if (volume.profile.TryGetSettings(out videoGlitch))
@@ -84,9 +87,9 @@ public class CloseScreenEffect : MonoBehaviour
         for (int i = 0; i < _deadPixel.Count; i++)
         {
             _deadPixel[i].SetActive(true);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.3f);
 
         }
-        Close();
+        Close(after);
     }
 }
