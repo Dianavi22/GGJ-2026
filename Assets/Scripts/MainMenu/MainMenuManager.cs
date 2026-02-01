@@ -56,8 +56,8 @@ public class MainMenuManager : MonoBehaviour
 
             if (screenFading.blend.value <= 0f)
             {
-              if(  screenFading.blend.value >= 1f)
-                isFadingClose = false;
+                if (screenFading.blend.value >= 1f)
+                    isFadingClose = false;
             }
         }
 
@@ -73,10 +73,13 @@ public class MainMenuManager : MonoBehaviour
         }
 
         if (_isTransition) { StartCoroutine(TransitionScreenMenu()); }
-       
+
         if (_isInMenuButNotMainMenu)
         {
-            if (Input.anyKey) { ShowMainMenu(); }
+            if (Input.anyKey && _creditsScreen.activeSelf == true) { ShowMainMenu(); }
+            if (Input.GetKeyDown(KeyCode.Escape) && _infoScreen.activeSelf == true)
+            {  ShowMainMenu();
+            }
         }
     }
 

@@ -7,8 +7,13 @@ public class MaaskExpressons : MonoBehaviour
     [SerializeField] GameObject _chockedFace;
     [SerializeField] List<GameObject> _agroFace;
     public bool isAgro = false;
+
+    public bool isRotating = false;
+    [SerializeField] float rotationSpeed = 90f;
+    private Quaternion initialRotation;
     void Start()
     {
+        initialRotation = transform.rotation;
     }
 
     void Update()
@@ -18,6 +23,14 @@ public class MaaskExpressons : MonoBehaviour
             StartCoroutine(ISeeU());
             isAgro = false;
         }
+        if (!isRotating) return;
+
+        transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime, Space.Self);
+    }
+
+    public void ResetRotation()
+    {
+        transform.rotation = initialRotation;
     }
 
     public IEnumerator ISeeU()
