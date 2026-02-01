@@ -34,7 +34,7 @@ namespace Entities.Enemy
 
     protected override void Start(){
       base.Start(); 
-      _fov = _player.GetComponent<FieldOfView>();
+      _fov = _player.GetComponentInChildren<FieldOfView>();
       _playerController = _player.GetComponent<PlayerController>();
       _state = MaskState.roaming;
       _target = _player;
@@ -47,9 +47,7 @@ namespace Entities.Enemy
 
       _state = IsPlayerInAggroRange ? MaskState.aggroed : MaskState.roaming;
 
-      print(_fov.visibleTargets.Count);
-
-      IsSeen = /*_playerController.ActiveMask == _weakness &&*/ _fov != null && _fov.visibleTargets.Count > 0 && _fov.visibleTargets.Find((target) => target == transform);
+      IsSeen = _playerController.ActiveMask == _weakness && _fov != null && _fov.visibleTargets.Count > 0 && _fov.visibleTargets.Find((target) => target == transform);
 
       if(IsSeen || Input.GetKeyDown(KeyCode.L)) {
 //        StopAllCoroutines();
