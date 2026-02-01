@@ -4,6 +4,7 @@ using UnityEngine;
 using Teagher.Rendering.PostProcessEffects;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using System;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -37,19 +38,25 @@ public class MainMenuManager : MonoBehaviour
         }
     }
 
-    public void CloseScreenMenu()
+    public void CloseScreenMenu(Action after)
     {
         if (volume.profile.TryGetSettings(out screenFading))
         {
             screenFading.blend.value = 0f;
             isFadingClose = true;
+
+            after();
         }
     }
 
     public void Play()
     {
-        _cse.StartPlay();
-        SceneManager.LoadScene("KFMAP");
+        Action after = () =>
+        {
+            SceneManager.LoadScene("KFMAP");
+        };
+
+        _cse.StartPlay(after);
     }
 
     void Update()

@@ -50,7 +50,9 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMegaGlitchTransition()
     {
-        //AudioClip glitchSfx = sfx[3];
-        //audioSource.PlayOneShot(glitchSfx, .05f);
+        audioSource.Stop();
+
+        AudioClip glitchSfx = sfx[3];
+        audioSource.PlayOneShot(glitchSfx,1f);
     }
 }
