@@ -48,7 +48,10 @@ public class CloseScreenEffect : MonoBehaviour
 
     public void Close()
     {
-        _mmm.CloseScreenMenu();
+       
+            _mmm.CloseScreenMenu();
+
+       
 
     }
 
