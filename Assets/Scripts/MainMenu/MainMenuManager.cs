@@ -15,6 +15,8 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] GameObject _infoScreen;
     public CloseScreenEffect _cse;
 
+    [SerializeField] AudioManager _audioManager;
+
 
     public PostProcessVolume volume;
     private ScreenFading screenFading;
@@ -80,11 +82,11 @@ public class MainMenuManager : MonoBehaviour
         {
             if (_infoScreen.activeSelf)
             {
-                if(Input.GetKeyUp(KeyCode.Escape) || Gamepad.current.bButton.isPressed) { ShowMainMenu();}
+                if(Input.GetKeyUp(KeyCode.Escape) || Gamepad.current.bButton.wasPressedThisFrame) { ShowMainMenu();}
             }
             else
             {
-                if(Input.anyKey || Gamepad.current.bButton.isPressed) { ShowMainMenu(); }
+                if(Input.anyKey || Gamepad.current.bButton.wasPressedThisFrame) { ShowMainMenu(); }
             }
         }
     }
@@ -92,7 +94,7 @@ public class MainMenuManager : MonoBehaviour
 
     public IEnumerator TransitionScreenMenu()
     {
-
+        _audioManager.PlayGlitchTransition();
         _glitchEffect.SetActive(true);
         yield return new WaitForSeconds(0.2f);
         _glitchEffect.SetActive(false);

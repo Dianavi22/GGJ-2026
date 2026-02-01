@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 
 public class SelectButton : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
+    [SerializeField] AudioManager _audioManager;
     [SerializeField] PlayButtonPart ButtonParts;
 
     public void OnSelect(BaseEventData eventData)
@@ -23,6 +24,7 @@ public class SelectButton : MonoBehaviour, ISelectHandler, IDeselectHandler
     void OnButtonDeselected()
     {
         ButtonParts.DisablePartsButton();
+        _audioManager.ButtonSelect();
 
     }
 }

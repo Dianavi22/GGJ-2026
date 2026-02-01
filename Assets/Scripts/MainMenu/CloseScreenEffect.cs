@@ -19,6 +19,8 @@ public class CloseScreenEffect : MonoBehaviour
     public PostProcessVolume volume;
     private VideoGlitch videoGlitch;
 
+    [SerializeField] AudioManager _audioManager;
+
     void Start()
     {
     }

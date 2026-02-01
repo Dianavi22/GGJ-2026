@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    AudioSource audioSource;
 
-    [SerializeField] AudioSource sfxAudioSource;
     [SerializeField] AudioClip mainTheme;
     [SerializeField] AudioClip[] sfx;
 
-    AudioSource mainAudioSource;
-
     private void Awake()
     {
-        mainAudioSource = GetComponent<AudioSource>();
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.playOnAwake = false;   
     }
 
     // Start is called before the first frame update
@@ -24,12 +23,34 @@ public class AudioManager : MonoBehaviour
 
     void PlayMainTheme()
     {
-        mainAudioSource.clip = mainTheme;
-        mainAudioSource.Play();
+
+        AudioClip openSfx = sfx[0];
+        AudioSource mainSfxAudioSource = gameObject.AddComponent<AudioSource>();
+        mainSfxAudioSource.playOnAwake = false;
+        mainSfxAudioSource.clip = openSfx;
+        mainSfxAudioSource.Play();
+
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = mainTheme;
+        audioSource.loop = true;
+        audioSource.PlayDelayed(openSfx.length - 2);
     }
 
-    public void PlayGlitch()
+    public void ButtonSelect()
     {
+        AudioClip buttonSfx = sfx[1];
+        audioSource.PlayOneShot(buttonSfx,.4f);
+    }
 
+    public void PlayGlitchTransition()
+    {
+        AudioClip glitchSfx = sfx[2];
+        audioSource.PlayOneShot(glitchSfx, .05f);
+    }
+
+    public void PlayMegaGlitchTransition()
+    {
+        //AudioClip glitchSfx = sfx[3];
+        //audioSource.PlayOneShot(glitchSfx, .05f);
     }
 }
