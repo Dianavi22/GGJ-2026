@@ -15,6 +15,8 @@ public class EndMenuManager : MonoBehaviour
     private ScreenFading screenFading;
     [SerializeField] private bool isFadingOpen = false;
     [SerializeField] private bool isFadingClose = false;
+    [SerializeField] GameObject  MaskAnim ;
+    [SerializeField] GameObject  TextMenu;
 
     void Start()
     {
@@ -28,6 +30,21 @@ public class EndMenuManager : MonoBehaviour
             screenFading.blend.value = 1f;
             isFadingOpen = true;
         }
+        Invoke("ShowMask", 0.4f);
+    }
+    public void ShowMask()
+    {
+        StartCoroutine(TransitionScreenMenu());
+        MaskAnim.SetActive(true);
+        Invoke("ShowText", 1.2f);
+
+
+    }
+    public void ShowText()
+    {
+        StartCoroutine(TransitionScreenMenu());
+
+        TextMenu.SetActive(true);
     }
 
     public void CloseScreenMenu()
@@ -41,7 +58,17 @@ public class EndMenuManager : MonoBehaviour
 
     public void Menu()
     {
-        _cse.StartPlay();
+        StartCoroutine(MainMenu());
+        //_cse.StartPlay();
+        //Invoke("MainMenu", 2f);
+    }
+
+    public IEnumerator MainMenu()
+    {
+        StartCoroutine( TransitionScreenMenu());
+        CloseScreenMenu();
+        yield return new WaitForSeconds(0.6f);
+
         SceneManager.LoadScene("SampleScene");
     }
 
