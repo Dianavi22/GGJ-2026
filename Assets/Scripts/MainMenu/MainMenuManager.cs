@@ -53,7 +53,7 @@ public class MainMenuManager : MonoBehaviour
     {
         Action after = () =>
         {
-            SceneManager.LoadScene("KFMAP");
+            StartCoroutine(LauchSceneAfterWait());
         };
 
         _cse.StartPlay(after);
@@ -96,6 +96,12 @@ public class MainMenuManager : MonoBehaviour
                 if(Input.anyKey || Gamepad.current.bButton.wasPressedThisFrame) { ShowMainMenu(); }
             }
         }
+    }
+
+    public IEnumerator LauchSceneAfterWait()
+    {
+        yield return new WaitForSeconds(.5f);
+        SceneManager.LoadScene("KFMAP");
     }
 
 

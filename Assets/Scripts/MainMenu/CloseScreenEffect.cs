@@ -55,6 +55,7 @@ public class CloseScreenEffect : MonoBehaviour
     public void Close(Action after)
     {
        _mmm.CloseScreenMenu(after);
+        _audioManager.PlayTVOffTransition();
     }
 
     bool AllGlitchValuesReached()

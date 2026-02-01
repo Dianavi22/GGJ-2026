@@ -55,4 +55,10 @@ public class AudioManager : MonoBehaviour
         AudioClip glitchSfx = sfx[3];
         audioSource.PlayOneShot(glitchSfx,1f);
     }
+
+    public void PlayTVOffTransition()
+    {
+        AudioClip glitchSfx = sfx[4];
+        audioSource.PlayOneShot(glitchSfx, 1f);
+    }
 }
