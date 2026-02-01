@@ -7148,6 +7148,17 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   visibleTargets: []
+--- !u!114 &309967751 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7447775783115456548, guid: 699beb4ed1b829170bf3f7a89c18df19, type: 3}
+  m_PrefabInstance: {fileID: 892175308}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309967747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e20d9b01100a3a8ba5f4abaea75cdef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &314047082 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1429462818159110928, guid: 699beb4ed1b829170bf3f7a89c18df19, type: 3}
@@ -52067,14 +52078,16 @@ MonoBehaviour:
   _happyMaskPart: {fileID: 462438269}
   _sadMaskPart: {fileID: 592755333}
   _ss: {fileID: 1077775318}
+  _playerMask: {fileID: 309967751}
   _neutralMask: {fileID: 1428285304}
   _happyMask: {fileID: 778700045}
   _sadMask: {fileID: 128978077}
   minValue: 3
   maxValue: 5
   speed: 2
+  isNeutral: 1
   isRed: 1
-  maskChange: 0
+  isBlue: 0
   isInDanger: 0
 --- !u!4 &2075759478
 Transform:
