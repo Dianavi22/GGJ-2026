@@ -5482,6 +5482,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1396665708196647850, guid: 2688c6c98ad7f4a4b8e3d5a41e62beee, type: 3}
+      propertyPath: mainTheme
+      value: 
+      objectReference: {fileID: 8300000, guid: f381287a85567c74e9076c110d799f79, type: 3}
+    - target: {fileID: 1396665708196647850, guid: 2688c6c98ad7f4a4b8e3d5a41e62beee, type: 3}
+      propertyPath: sfx.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9498ef8f556a33e45a10f42f67039770, type: 3}
     - target: {fileID: 4344989022634407625, guid: 2688c6c98ad7f4a4b8e3d5a41e62beee, type: 3}
       propertyPath: m_LocalPosition.x
       value: 27.556067
