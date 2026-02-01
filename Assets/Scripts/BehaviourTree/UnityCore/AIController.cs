@@ -47,7 +47,7 @@ namespace BehaviourTree.UnityCore
 
             _agent.updateRotation = false;
             _agent.updateUpAxis = false;
-            _agent.stoppingDistance = _aggroRange;
+            _agent.stoppingDistance = _aggroRange * 0.75f;
         }
 
         protected virtual void Start()
@@ -117,7 +117,7 @@ namespace BehaviourTree.UnityCore
         public Coroutine SetIdleState(Action onComplete) => StartCoroutine(IdleCoroutine(onComplete));
         public Coroutine SetFleeingState(Action onComplete) => StartCoroutine(FleeCoroutine(onComplete));
         public Coroutine SetMovingState(Action onComplete) => StartCoroutine(MoveCoroutine(onComplete));
-        public Coroutine SetAttackCoroutine(Action onComplete) => StartCoroutine(AttackCoroutine(onComplete));
+        public Coroutine SetAttackState(Action onComplete) => StartCoroutine(AttackCoroutine(onComplete));
 
         protected IEnumerator MoveCoroutine(Action onComplete)
         {

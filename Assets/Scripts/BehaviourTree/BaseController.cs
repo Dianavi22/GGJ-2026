@@ -45,23 +45,11 @@ namespace Entities.Enemy
 
       if(_state == MaskState.feared) return;
 
-      if(IsPlayerInAggroRange && _state == MaskState.roaming) {
-        _state = MaskState.aggroed;
-      }
+      _state = IsPlayerInAggroRange ? MaskState.aggroed : MaskState.roaming;
 
-      if(_state != MaskState.feared)
-        {
-            if (IsPlayerInAggroRange)
-            {
-                _state = MaskState.aggroed;
-            }
-            else
-            {
-                _state = MaskState.roaming;
-            }
-        }
+      print(_fov.visibleTargets.Count);
 
-      IsSeen = _playerController.ActiveMask == _weakness && _fov != null && _fov.visibleTargets.Count > 0 && _fov.visibleTargets.Find((target) => target == transform);
+      IsSeen = /*_playerController.ActiveMask == _weakness &&*/ _fov != null && _fov.visibleTargets.Count > 0 && _fov.visibleTargets.Find((target) => target == transform);
 
       if(IsSeen || Input.GetKeyDown(KeyCode.L)) {
 //        StopAllCoroutines();
@@ -72,17 +60,14 @@ namespace Entities.Enemy
     #region Objects Generation
     protected override Node ConstructBehaviorTree()
     {
-      //TODO: each child object has to construct its tree based on this one which has idle and random movement.
       Move move = new(this);
       Flee flee = new(this);
       Idle idle = new(this);
+      Attack attack = new(this);
 
-      List<Node> sequences = new() { idle, move, flee /*, ...AggroedBehaviour()*/};
+      List<Node> sequences = new() { idle, move, flee , attack};
       return new Repeater(new AdvancedSelector(sequences));
     }
-
-    //TODO: uncomment next line
-    // protected abstract List<Node> AggroedBehaviour();
     #endregion
 
     #region States Coroutines
