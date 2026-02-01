@@ -10,6 +10,11 @@ public class WallVFX : MonoBehaviour
     [SerializeField] ScreenShake _ss;
     [SerializeField] PlayerController _playerMask;
 
+    [SerializeField] GameObject _neutralMask;
+    [SerializeField] GameObject _happyMask;
+    [SerializeField] GameObject _sadMask;
+
+
     public float minValue = 0f;
     public float maxValue = 1f;
     public float speed = 1f;
@@ -80,14 +85,35 @@ public class WallVFX : MonoBehaviour
         }
     }
 
+     
+
     private IEnumerator ChangeMaskEffect()
     {
         _glitchEffect.SetActive(true);
-
-        if (isRed) _sadMaskPart.Play();
-
-        else if(isBlue) _sadMaskPart.Play();
+ 
         
+        yield return new WaitForSeconds(0.2f);
+        if (_playerMask.ActiveMask == PlayerController.Masks.RED) { _happyMaskPart.Play();
+            _sadMaskPart.Stop();
+            _neutralMask.SetActive(false);
+            _happyMask.SetActive(true);
+            _sadMask.SetActive(false);
+        }
+        else if (_playerMask.ActiveMask == PlayerController.Masks.BLUE)
+        {
+            _sadMaskPart.Play();
+            _happyMaskPart.Stop();
+
+            _neutralMask.SetActive(false);
+            _happyMask.SetActive(false);
+            _sadMask.SetActive(true);
+            _sadMaskPart.Play();
+        }
+        else{
+            _neutralMask.SetActive(true);
+            _happyMask.SetActive(false);
+            _sadMask.SetActive(false);
+        }
         yield return new WaitForSeconds(0.2f);
         _glitchEffect.SetActive(false);
         isRed = !isRed;
