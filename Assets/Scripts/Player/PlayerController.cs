@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _rotationSpeed;
     [SerializeField] private float _interpolationSpeed;
+    [SerializeField] private PlayerAudioManager playerAudioManager;
 
     public bool isNeutral = true;
     public bool isRed = false;
@@ -60,6 +61,7 @@ public class PlayerController : MonoBehaviour
 
     private void ChangeMask(Masks mask)
     {
+        playerAudioManager.PlaySwitch();
         ActiveMask = mask;
     }
 
