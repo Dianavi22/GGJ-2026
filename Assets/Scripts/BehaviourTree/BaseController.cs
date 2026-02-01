@@ -42,7 +42,11 @@ namespace Entities.Enemy
     }
 
     protected override void Update() {
-      base.Update();
+      if(_state == MaskState.aggroed) {
+        //TODO: custom behaviour
+      } else {
+        base.Update();
+      }
 
       IsSeen = _playerController.ActiveMask == _weakness && _fov != null && _fov.visibleTargets.Count > 0 && _fov.visibleTargets.Find((target) => target == transform) && !IsSeen;
 
