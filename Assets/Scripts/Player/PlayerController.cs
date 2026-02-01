@@ -1,8 +1,10 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
+  public Masks ActiveMask = Masks.NONE;
   [SerializeField] private float _speed;
   [SerializeField] private float _rotationSpeed;
   [SerializeField] private float _interpolationSpeed;
@@ -10,32 +12,49 @@ public class PlayerController : MonoBehaviour
   private Rigidbody _rigidbody;
 
   private bool _lookingBehind;
-  private void Awake() {
+
+  private void Awake()
+  {
     _rigidbody = GetComponent<Rigidbody>();
   }
 
-  private void Update() {
-    if(Input.GetKeyDown(KeyCode.Space)) {
+  private void Update()
+  {
+    if (Input.GetKeyDown(KeyCode.Space))
+    {
       _rigidbody.MoveRotation(Quaternion.LookRotation(-transform.forward, Vector3.up));
     }
 
     if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.A))
     {
-            ChangeMask(Masks.BLUE);
-        _rigidbody.MoveRotation(Quaternion.LookRotation(-transform.forward, Vector3.up));
+
+      _rigidbody.MoveRotation(Quaternion.LookRotation(-transform.forward, Vector3.up));
     }
     if (Input.GetKeyDown(KeyCode.E))
     {
+      switch (ActiveMask)
+      {
+        case Masks.BLUE:
+          ChangeMask(Masks.RED);
+          break;
+        case Masks.RED:
+          ChangeMask(Masks.NONE);
+          break;
+        case Masks.NONE:
+          ChangeMask(Masks.BLUE);
+          break;
 
+      }
     }
-    
+
     if (Input.GetKeyDown(KeyCode.Space))
     {
-        _rigidbody.MoveRotation(Quaternion.LookRotation(-transform.forward, Vector3.up));
+      _rigidbody.MoveRotation(Quaternion.LookRotation(-transform.forward, Vector3.up));
     }
-    }
+  }
 
-  private void FixedUpdate() {
+  private void FixedUpdate()
+  {
     Vector3 movementDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
     Vector3 moveVect = _speed * Time.fixedDeltaTime * movementDir;
 
@@ -43,24 +62,29 @@ public class PlayerController : MonoBehaviour
     if (movementDir != Vector3.zero) Rotate(movementDir);
   }
 
-    private void ChangeMask(Masks mask)
+  private void ChangeMask(Masks mask)
+  {
+    ActiveMask = mask;
+    Debug.Log(ActiveMask);
+  }
+
+  private void Rotate(Vector3 direction)
+  {
+    if (_lookingBehind)
     {
-
-    }
-
-  private void Rotate(Vector3 direction) {
-    if(_lookingBehind) {
       direction = -direction;
-    };
+    }
+    ;
 
     direction += transform.position;
     Quaternion targetRotation = Quaternion.LookRotation(direction - transform.position);
     transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _interpolationSpeed);
   }
 
-    private enum Masks
-    {
-        BLUE,
-        RED
-    }
+  public enum Masks
+  {
+    BLUE,
+    RED,
+    NONE
+  }
 }
