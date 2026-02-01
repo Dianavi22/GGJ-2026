@@ -9850,9 +9850,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 266004784}
     - target: {fileID: 8498954856099347435, guid: 0eb87ed171bc2d149ba769bf14142162, type: 3}
+      propertyPath: _baseSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498954856099347435, guid: 0eb87ed171bc2d149ba769bf14142162, type: 3}
       propertyPath: _spawnPoint
       value: 
       objectReference: {fileID: 837222878}
+    - target: {fileID: 8498954856099347435, guid: 0eb87ed171bc2d149ba769bf14142162, type: 3}
+      propertyPath: _fearedSpeed
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11424,6 +11432,10 @@ PrefabInstance:
       propertyPath: _playerTarget
       value: 
       objectReference: {fileID: 266004784}
+    - target: {fileID: 4041481545449452592, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
+      propertyPath: m_Height
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 9200464450819148821, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
       propertyPath: fov
       value: 
@@ -11436,6 +11448,10 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 266004784}
+    - target: {fileID: 9200464450819148821, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
+      propertyPath: _baseSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 9200464450819148821, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
       propertyPath: _spawnPoint
       value: 

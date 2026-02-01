@@ -43,10 +43,10 @@ public class PlayerController : MonoBehaviour
             StartCoroutine("PutYourMaskOn", Masks.RED);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            _rigidbody.MoveRotation(Quaternion.LookRotation(-transform.forward, Vector3.up));
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    _rigidbody.MoveRotation(Quaternion.LookRotation(-transform.forward, Vector3.up));
+        //}
     }
 
     private void FixedUpdate()
