@@ -10,91 +10,101 @@ using static BehaviourTree.Leaves.BaseTasks;
 
 namespace Entities.Enemy
 {
-    public class BaseController : AIController
+  public abstract class BaseController : AIController
+  {
+    public enum MaskState { roaming, aggroed, feared };
+
+    public bool AttackMode = false;
+    public bool IsSeen = false;
+
+    [SerializeField] private PlayerController.Masks _weakness;
+    [SerializeField] private float _baseSpeed;
+    [SerializeField] private float _fearedSpeed;
+
+    protected FieldOfView _fov;
+    protected PlayerController _playerController;
+
+    protected MaskState _state;
+    public MaskState Status => _state;
+
+    protected override void Awake()
     {
-        public bool AttackMode = false;
-        public bool IsSeen = false;
+      base.Awake();
 
-        [SerializeField] private Transform _spawnPoint;
-        protected NavMeshAgent _navAgent;
-        protected FieldOfView _fov;
-        protected PlayerController _playerController;
-        protected override void Awake()
-        {
-            base.Awake();
-            _navAgent = GetComponent<NavMeshAgent>();
-            _fov = _player.GetComponent<FieldOfView>();
-            _playerController = _player.GetComponent<PlayerController>();
-
-            _navAgent.acceleration = 0.3f;
-            EnableTree();
-        }
-
-        protected override void FixedUpdate()
-        {
-            base.FixedUpdate();
-        }
-
-        #region Objects Generation
-        protected override Node ConstructBehaviorTree()
-        {
-            Move move = new(this);
-            Idle idle = new(this);
-            Attack attack = new(this);
-            IdleAttack idleAttack = new(this);
-            SwitchTarget switchTargetCoroutine = new(this);
-
-            List<Node> sequences = new() { idle, move, attack, idleAttack, switchTargetCoroutine };
-            return new Repeater(new AdvancedSelector(sequences));
-        }
-        #endregion
-        #region Helpers
-
-        #endregion
-        #region State Change Handling
-
-        #endregion
-        #region States Coroutines
-
-        protected override IEnumerator IdleCoroutine(Action onComplete)
-        {
-            yield return new WaitForSeconds(UnityEngine.Random.Range(0.2f, 0.5f));
-            onComplete?.Invoke();
-        }
-
-        protected override IEnumerator AttackCoroutine(Action onComplete)
-        {
-            _target = _player;
-            AttackMode = true;
-            _navAgent.acceleration = 1f;
-            yield return null;
-        }
-
-        protected override IEnumerator IdleAttackCoroutine(Action onComplete)
-        {
-            // Do nothing, to implement in children
-            yield return null;
-        }
-
-
-        protected override IEnumerator SwitchTargetState(Action onComplete)
-        {
-            // Switch between player and spawnPoint as targets when moving
-            // Switch should nly occur when ennemy have been frightened by player (with mask)
-            // Or when ennemy get back to hunting player
-            if (_target != _player)
-            {
-                _target = _player;
-            }
-            else if (_target != _spawnPoint)
-            {
-                _target = _spawnPoint;
-            }
-            Debug.Log("hop hop on change");
-            yield return null;
-            onComplete?.Invoke();
-        }
-
-        #endregion
     }
+
+
+    protected override void Start(){
+      base.Start(); 
+      _fov = _player.GetComponent<FieldOfView>();
+      _playerController = _player.GetComponent<PlayerController>();
+      ChangeState(MaskState.roaming);
+    }
+
+    protected override void Update() {
+      base.Update();
+
+      IsSeen = _playerController.ActiveMask == _weakness && _fov != null && _fov.visibleTargets.Count > 0 && _fov.visibleTargets.Find((target) => target == transform) && !IsSeen;
+
+      //TODO: TO REMOVE DEBUG!!!!
+      if(Input.GetKeyDown(KeyCode.F)) {
+        ChangeState(MaskState.feared);
+      }
+
+      if(Input.GetKeyDown(KeyCode.C)){
+        ChangeState(MaskState.roaming);
+      }
+    }
+
+    protected override void FixedUpdate()
+    {
+      base.FixedUpdate();
+
+    }
+
+    private void ChangeState(MaskState newState){
+      _state = newState;
+      SwitchTarget();
+    }
+
+    private void SwitchTarget()
+    {
+      // Switch between player and spawnPoint as targets when moving
+      // Switch should only occur when ennemy have been frightened by player (with mask)
+      // Or when ennemy get back to hunting player
+      _target = _state switch {
+        MaskState.feared => _spawn,
+        _ => _player
+      };
+
+      _agent.speed = _state switch {
+        MaskState.feared => _fearedSpeed,
+        _ => _baseSpeed
+      };
+    }
+
+    #region Objects Generation
+    protected override Node ConstructBehaviorTree()
+    {
+      //TODO: each child object has to construct its tree based on this one which has idle and random movement.
+      Move move = new(this);
+      Idle idle = new(this);
+
+      List<Node> sequences = new() { idle, move /*, ...AggroedBehaviour()*/};
+      return new Repeater(new AdvancedSelector(sequences));
+    }
+
+    //TODO: uncomment next line
+    // protected abstract List<Node> AggroedBehaviour();
+    #endregion
+
+    #region States Coroutines
+    // Idling for random amount of time
+    protected override IEnumerator IdleCoroutine(Action onComplete)
+    {
+      yield return new WaitForSeconds(UnityEngine.Random.Range(0.2f, 0.5f));
+      onComplete?.Invoke();
+    }
+    #endregion
+  }
 }
