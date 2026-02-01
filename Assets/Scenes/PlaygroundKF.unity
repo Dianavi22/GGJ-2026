@@ -4241,6 +4241,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2480625808885026997, guid: 15149877d9437c64d8e5fb82a5885f1d, type: 3}
   m_PrefabInstance: {fileID: 671381857}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &676224174 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7235367658951015023, guid: 699beb4ed1b829170bf3f7a89c18df19, type: 3}
+  m_PrefabInstance: {fileID: 892175308}
+  m_PrefabAsset: {fileID: 0}
+--- !u!81 &676224176
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676224174}
+  m_Enabled: 1
 --- !u!1001 &680149849
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5560,10 +5573,17 @@ PrefabInstance:
       propertyPath: ActiveMask
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8392307757777018025, guid: 699beb4ed1b829170bf3f7a89c18df19, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7235367658951015023, guid: 699beb4ed1b829170bf3f7a89c18df19, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 676224176}
   m_SourcePrefab: {fileID: 100100000, guid: 699beb4ed1b829170bf3f7a89c18df19, type: 3}
 --- !u!1001 &906790590
 PrefabInstance:
@@ -11432,10 +11452,6 @@ PrefabInstance:
       propertyPath: _playerTarget
       value: 
       objectReference: {fileID: 266004784}
-    - target: {fileID: 4041481545449452592, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
-      propertyPath: m_Height
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 9200464450819148821, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
       propertyPath: fov
       value: 
@@ -11448,10 +11464,6 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 266004784}
-    - target: {fileID: 9200464450819148821, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
-      propertyPath: _baseSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 9200464450819148821, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
       propertyPath: _spawnPoint
       value: 
