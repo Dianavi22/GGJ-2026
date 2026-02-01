@@ -77,5 +77,23 @@ namespace BehaviourTree.Leaves
         return _character.Status == BaseController.MaskState.feared ? 100 : 0;
       }
     }
+
+    public class Attack : CoroutineNode{
+      private readonly BaseController _character;
+
+      public Attack(BaseController character) {
+        _character = character;
+      }
+
+      protected override Coroutine StartAction(Action onComplete) => _character.SetAttackState(onComplete);
+
+      public override float GetBaseWeight() => 0;
+
+      public override float GetModifiedWeight()
+      {
+        return _character.Status == BaseController.MaskState.aggroed ? 100 : 0;
+      }
+    }
+ 
   }
 }
