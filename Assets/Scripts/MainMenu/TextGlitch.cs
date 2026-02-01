@@ -31,7 +31,6 @@ public class TextGlitch : MonoBehaviour
             float waitTime = Random.Range(minTimeBetweenGlitch, maxTimeBetweenGlitch);
             yield return new WaitForSeconds(waitTime);
 
-            // Glitch
             float glitchDuration = Random.Range(minGlitchDuration, maxGlitchDuration);
             text.text = glitchText[Random.Range(0, glitchText.Count)];
 

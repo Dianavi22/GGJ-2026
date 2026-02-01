@@ -15,8 +15,25 @@ public class PlayerController : MonoBehaviour
   }
 
   private void Update() {
-    _lookingBehind = Input.GetAxisRaw("Jump") == 1;
-  }
+    if(Input.GetKeyDown(KeyCode.Space)) {
+      _rigidbody.MoveRotation(Quaternion.LookRotation(-transform.forward, Vector3.up));
+    }
+
+    if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.A))
+    {
+            ChangeMask(Masks.BLUE);
+        _rigidbody.MoveRotation(Quaternion.LookRotation(-transform.forward, Vector3.up));
+    }
+    if (Input.GetKeyDown(KeyCode.E))
+    {
+
+    }
+    
+    if (Input.GetKeyDown(KeyCode.Space))
+    {
+        _rigidbody.MoveRotation(Quaternion.LookRotation(-transform.forward, Vector3.up));
+    }
+    }
 
   private void FixedUpdate() {
     Vector3 movementDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
@@ -25,6 +42,11 @@ public class PlayerController : MonoBehaviour
     _rigidbody.MovePosition(_rigidbody.position + moveVect);
     if (movementDir != Vector3.zero) Rotate(movementDir);
   }
+
+    private void ChangeMask(Masks mask)
+    {
+
+    }
 
   private void Rotate(Vector3 direction) {
     if(_lookingBehind) {
@@ -35,4 +57,10 @@ public class PlayerController : MonoBehaviour
     Quaternion targetRotation = Quaternion.LookRotation(direction - transform.position);
     transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _interpolationSpeed);
   }
+
+    private enum Masks
+    {
+        BLUE,
+        RED
+    }
 }
