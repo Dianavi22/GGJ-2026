@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/KFMAP.unity
-    guid: 68a7f3c52fd8668459c1015631757e76
+    path: Assets/Scenes/GameOverSceneVictory.unity
+    guid: c439bfd51b47aa44082edcc2de2509b3
+  - enabled: 1
+    path: Assets/Scenes/GameOverSceneRed.unity
+    guid: 3a81f62aef722d34bb22adbc54962ce3
+  - enabled: 1
+    path: Assets/Scenes/GameOverSceneBlue.unity
+    guid: 1c4e8405c7313994a955d7b7c430140f
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/PlaygroundKF.unity
+    guid: e317c70b6e8b0734e8dee7510247e40c
   m_configObjects: {}
