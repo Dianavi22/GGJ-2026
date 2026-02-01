@@ -14,7 +14,7 @@ namespace BehaviourTree.UnityCore
     public abstract class AIController : MonoBehaviour
     {
         [Header("AI Controller")]
-        [SerializeField, Tooltip("Range of the melee (in m, used as Stopping Distance as well)")] private float _meleeRange;
+        [SerializeField, Tooltip("Range of the aggro state (in m, used as Stopping Distance as well)")] private float _aggroRange;
 
         [Header("Debug")]
         [SerializeField, Tooltip("Overrides the BT evaluation according to Evaluate Tree Override")] private bool _shouldOverrideTreeEvaluation = false;
@@ -23,34 +23,31 @@ namespace BehaviourTree.UnityCore
 
         private bool _evaluateTree = false, _canMove = false;
         private Node _root;
-        private NavMeshAgent _agent;
+        protected NavMeshAgent _agent;
         [SerializeField] protected Transform _player;
 
         protected Transform _target;
-        protected Vector3 _defaultPosition;
+        [SerializeField] protected Transform _spawn;
         private readonly Dictionary<string, float> _cooldowns = new();
-        private List<Collider2D> _colliders;
+        private List<Collider> _colliders;
 
         #region Getters
-        public bool IsAggro => _player != null;
-        public bool IsPlayerInMeleeRange => _player != null && Vector3.Distance(transform.position, _player.transform.position) < _meleeRange;
+        public bool IsPlayerInAggroRange => _player != null && Vector3.Distance(transform.position, _player.transform.position) < _aggroRange;
         public bool AllOnCooldown => _cooldowns.All((e) => 0 < e.Value) && _cooldowns.Count != 0;
         #endregion
 
         #region Unity Callbacks
         protected virtual void Awake()
         {
-            _defaultPosition = transform.position;
-
             _agent = GetComponent<NavMeshAgent>();
-            _colliders = GetComponentsInChildren<Collider2D>().ToList();
+            _colliders = GetComponentsInChildren<Collider>().ToList();
 
             _root = ConstructBehaviorTree();
             _evaluateTree = true;
 
             _agent.updateRotation = false;
             _agent.updateUpAxis = false;
-            _agent.stoppingDistance = _meleeRange;
+            _agent.stoppingDistance = _aggroRange;
         }
 
         protected virtual void Start()
@@ -81,7 +78,7 @@ namespace BehaviourTree.UnityCore
             }
         }
 
-        protected virtual void OnTriggerEnter2D(Collider2D other)
+        protected virtual void OnTriggerEnter(Collider other)
         {
 
             // Here TODO if other trygetcomponent visionCone
@@ -100,27 +97,19 @@ namespace BehaviourTree.UnityCore
             }
 
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, _meleeRange);
+            Gizmos.DrawWireSphere(transform.position, _aggroRange);
         }
         #endregion
 
         #region Abstract & Virtual methods
         protected abstract Node ConstructBehaviorTree();
         protected abstract IEnumerator IdleCoroutine(Action onComplete);
-        protected abstract IEnumerator AttackCoroutine(Action onComplete);
-        protected abstract IEnumerator IdleAttackCoroutine(Action onComplete);
-        protected abstract IEnumerator SwitchTargetState(Action onComplete);
 
         protected virtual void OnMove() { }
 
-        public virtual void OnDeath()
-        {
-            gameObject.SetActive(false);
-        }
-
         protected virtual void Reset()
         {
-            transform.position = _defaultPosition;
+            transform.position = _spawn.position;
             StopAllCoroutines();
 
             for (int i = 0; i < _cooldowns.Count; i++)
@@ -133,11 +122,10 @@ namespace BehaviourTree.UnityCore
         protected void SetCooldown(string key, float cooldown) => _cooldowns[key] = cooldown;
         protected void DisableTree() => _evaluateTree = false;
         protected void EnableTree() => _evaluateTree = true;
+
         public Coroutine SetIdleState(Action onComplete) => StartCoroutine(IdleCoroutine(onComplete));
         public Coroutine SetMovingState(Action onComplete) => StartCoroutine(MoveCoroutine(onComplete));
-        public Coroutine SetAttackState(Action onComplete) => StartCoroutine(AttackCoroutine(onComplete));
-        public Coroutine SetIdleAttackState(Action onComplete) => StartCoroutine(IdleAttackCoroutine(onComplete));
-        public Coroutine SetSwitchTargetState(Action onComplete) => StartCoroutine(SwitchTargetState(onComplete));
+
         protected IEnumerator MoveCoroutine(Action onComplete)
         {
             _canMove = true;

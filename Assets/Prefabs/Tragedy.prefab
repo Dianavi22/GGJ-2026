@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 1438004922800123177}
   - component: {fileID: 4668333111723893242}
   - component: {fileID: 301833567720643405}
-  - component: {fileID: 6018305288841317309}
   - component: {fileID: 409164588231751213}
   - component: {fileID: 9200464450819148821}
   m_Layer: 9
@@ -121,29 +120,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &6018305288841317309
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1022835491410812534}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &409164588231751213
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -178,12 +154,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa08e70e41f273d45a5751826fe69fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _meleeRange: 0
+  _aggroRange: 0.5
   _shouldOverrideTreeEvaluation: 0
   _evaluateTreeOverride: 0
   _showMeleeRangeGizmos: 0
   _player: {fileID: 0}
+  _spawn: {fileID: 0}
   AttackMode: 0
+  IsSeen: 0
+  _weakness: 0
+  _baseSpeed: 3.5
+  _fearedSpeed: 4.5
 --- !u!1 &2839834248113962012
 GameObject:
   m_ObjectHideFlags: 0
