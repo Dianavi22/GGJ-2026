@@ -11489,6 +11489,18 @@ PrefabInstance:
       propertyPath: _playerTarget
       value: 
       objectReference: {fileID: 266004784}
+    - target: {fileID: 7423768681256482628, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
+      propertyPath: MaxDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7423768681256482628, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
+      value: 0.2638889
+      objectReference: {fileID: 0}
+    - target: {fileID: 7423768681256482628, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 9200464450819148821, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
       propertyPath: fov
       value: 
