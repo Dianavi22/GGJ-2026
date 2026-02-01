@@ -11,5 +11,12 @@ namespace Entities.Enemy
         {
             base.Awake();
         }
+
+        void FixedUpdate()
+        {
+            base.FixedUpdate();
+            IsSeen = _playerController.ActiveMask == PlayerController.Masks.BLUE && _fov != null && _fov.visibleTargets.Count > 0 && _fov.visibleTargets.Find((target) => target == transform) && !IsSeen;
+
+        }
     }
 }
