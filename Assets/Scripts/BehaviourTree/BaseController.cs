@@ -49,6 +49,18 @@ namespace Entities.Enemy
         _state = MaskState.aggroed;
       }
 
+      if(_state != MaskState.feared)
+        {
+            if (IsPlayerInAggroRange)
+            {
+                _state = MaskState.aggroed;
+            }
+            else
+            {
+                _state = MaskState.roaming;
+            }
+        }
+
       IsSeen = _playerController.ActiveMask == _weakness && _fov != null && _fov.visibleTargets.Count > 0 && _fov.visibleTargets.Find((target) => target == transform);
 
       if(IsSeen || Input.GetKeyDown(KeyCode.L)) {
