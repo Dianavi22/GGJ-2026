@@ -18,10 +18,10 @@ MonoBehaviour:
     value: 1
   m_FillColor1:
     overrideState: 1
-    value: 9.11
+    value: 1.2
   m_FillColor2:
     overrideState: 1
-    value: 1.53
+    value: -0.58
   m_Contrast:
     overrideState: 1
     value: 0.08
