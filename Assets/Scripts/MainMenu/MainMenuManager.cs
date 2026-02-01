@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine;
 using Teagher.Rendering.PostProcessEffects;
-using UnityEngine.InputSystem;
-using System.Linq;
-using UnityEngine.InputSystem.Controls;
+using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -49,6 +47,7 @@ public class MainMenuManager : MonoBehaviour
     public void Play()
     {
         _cse.StartPlay();
+        SceneManager.LoadScene("KFMAP");
     }
 
     void Update()
@@ -59,8 +58,8 @@ public class MainMenuManager : MonoBehaviour
 
             if (screenFading.blend.value <= 0f)
             {
-              if(  screenFading.blend.value >= 1f)
-                isFadingClose = false;
+                if (screenFading.blend.value >= 1f)
+                    isFadingClose = false;
             }
         }
 
@@ -77,10 +76,12 @@ public class MainMenuManager : MonoBehaviour
 
         if (_isTransition) { StartCoroutine(TransitionScreenMenu()); }
 
-       
         if (_isInMenuButNotMainMenu)
         {
-            if (Input.anyKey || Input.GetKeyUp(KeyCode.Escape) || Gamepad.current.bButton.isPressed) { ShowMainMenu(); }
+            if (Input.anyKey && _creditsScreen.activeSelf == true) { ShowMainMenu(); }
+            if (Input.GetKeyDown(KeyCode.Escape) && _infoScreen.activeSelf == true)
+            {  ShowMainMenu();
+            }
         }
     }
 
