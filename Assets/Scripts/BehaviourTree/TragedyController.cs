@@ -7,9 +7,9 @@ namespace Entities.Enemy
 {
   public class TragedyController : BaseController
   {
-    protected override void Awake()
-    {
-      base.Awake();
-    }
+        protected override IEnumerator AttackCoroutine(Action onComplete)
+            {
+               yield return null ;
+            }
   }
 }
