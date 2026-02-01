@@ -21,13 +21,13 @@ MonoBehaviour:
     value: 9.11
   m_FillColor2:
     overrideState: 1
-    value: 5.81
+    value: 1.53
   m_Contrast:
     overrideState: 1
     value: 0.08
   m_Brightness:
     overrideState: 1
-    value: 1.49
+    value: 1.11
   m_ScanLinesColor:
     overrideState: 1
     value: {r: 0.86415094, g: 0.13532923, b: 0.13532923, a: 1}

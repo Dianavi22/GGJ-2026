@@ -8,6 +8,8 @@ public class InfoMainMenu : MonoBehaviour
     [SerializeField] Material _happyMat;
     [SerializeField] Material _sadMat;
     [SerializeField] GameObject _glitch;
+    [SerializeField] GameObject _comedyText;
+    [SerializeField] GameObject _tragedyText;
 
     private bool isRed = true;
     void Start()
@@ -36,6 +38,10 @@ public class InfoMainMenu : MonoBehaviour
                     _lights[i].GetComponent<Renderer>().material = _sadMat;
                  
             }
+            
+
+            _comedyText.SetActive(true);
+            _tragedyText.SetActive(false);
         }
         else
         {
@@ -45,7 +51,8 @@ public class InfoMainMenu : MonoBehaviour
                 _lights[i].GetComponent<Renderer>().material = _happyMat;
 
             }
-
+            _comedyText.SetActive(false);
+            _tragedyText.SetActive(true);
         }
         isRed = !isRed;
     }
