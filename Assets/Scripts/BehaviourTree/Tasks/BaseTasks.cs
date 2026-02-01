@@ -20,7 +20,7 @@ namespace BehaviourTree.Leaves
 
       public override float GetBaseWeight()
       {
-        return 0.2f;
+        return 0.3f;
       }
 
       public override float GetModifiedWeight()
@@ -54,10 +54,46 @@ namespace BehaviourTree.Leaves
 
       public override float GetModifiedWeight()
       {
+
         float weight = GetBaseWeight();
 
         return weight;
       }
     }
+
+    public class Flee : CoroutineNode{
+      private readonly BaseController _character;
+
+      public Flee(BaseController character) {
+        _character = character;
+      }
+
+      protected override Coroutine StartAction(Action onComplete) => _character.SetFleeingState(onComplete);
+
+      public override float GetBaseWeight() => 0;
+
+      public override float GetModifiedWeight()
+      {
+        return _character.Status == BaseController.MaskState.feared ? 100 : 0;
+      }
+    }
+
+    public class Attack : CoroutineNode{
+      private readonly BaseController _character;
+
+      public Attack(BaseController character) {
+        _character = character;
+      }
+
+      protected override Coroutine StartAction(Action onComplete) => _character.SetAttackState(onComplete);
+
+      public override float GetBaseWeight() => 0;
+
+      public override float GetModifiedWeight()
+      {
+        return _character.Status == BaseController.MaskState.aggroed ? 100 : 0;
+      }
+    }
+ 
   }
 }

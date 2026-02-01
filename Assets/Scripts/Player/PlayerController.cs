@@ -33,17 +33,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            _rigidbody.MoveRotation(Quaternion.LookRotation(-transform.forward, Vector3.up));
-        }
-
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) || Input.GetMouseButtonDown(0))
         {
             StartCoroutine("PutYourMaskOn", Masks.BLUE);
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(1))
         {
             StartCoroutine("PutYourMaskOn", Masks.RED);
         }
@@ -60,7 +55,7 @@ public class PlayerController : MonoBehaviour
         Vector3 moveVect = _speed * Time.fixedDeltaTime * movementDir;
 
         _rigidbody.MovePosition(_rigidbody.position + moveVect);
-        if (movementDir != Vector3.zero) Rotate(movementDir);
+        //if (movementDir != Vector3.zero) Rotate(movementDir);
     }
 
     private void ChangeMask(Masks mask)

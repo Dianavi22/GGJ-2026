@@ -21,7 +21,7 @@ namespace BehaviourTree.UnityCore
         [SerializeField, Tooltip("Overrides the BT evaluation to Overrde Tree Evaulation")] private bool _evaluateTreeOverride = false;
         [SerializeField, Tooltip("Show the melee range with the Gizmos")] private bool _showMeleeRangeGizmos = false;
 
-        private bool _evaluateTree = false, _canMove = false;
+        protected bool _evaluateTree = false, _canMove = false;
         private Node _root;
         protected NavMeshAgent _agent;
         [SerializeField] protected Transform _player;
@@ -47,7 +47,7 @@ namespace BehaviourTree.UnityCore
 
             _agent.updateRotation = false;
             _agent.updateUpAxis = false;
-            _agent.stoppingDistance = _aggroRange;
+            _agent.stoppingDistance = _aggroRange * 0.75f;
         }
 
         protected virtual void Start()
@@ -78,17 +78,6 @@ namespace BehaviourTree.UnityCore
             }
         }
 
-        protected virtual void OnTriggerEnter(Collider other)
-        {
-
-            // Here TODO if other trygetcomponent visionCone
-            // if (other.TryGetComponent(out PlayerController player))
-            // {
-            //     _player = player.transform;
-            // }
-
-        }
-
         private void OnDrawGizmos()
         {
             if (!_showMeleeRangeGizmos)
@@ -104,6 +93,8 @@ namespace BehaviourTree.UnityCore
         #region Abstract & Virtual methods
         protected abstract Node ConstructBehaviorTree();
         protected abstract IEnumerator IdleCoroutine(Action onComplete);
+        protected abstract IEnumerator FleeCoroutine(Action onComplete);
+        protected abstract IEnumerator AttackCoroutine(Action onComplete);
 
         protected virtual void OnMove() { }
 
@@ -124,7 +115,9 @@ namespace BehaviourTree.UnityCore
         protected void EnableTree() => _evaluateTree = true;
 
         public Coroutine SetIdleState(Action onComplete) => StartCoroutine(IdleCoroutine(onComplete));
+        public Coroutine SetFleeingState(Action onComplete) => StartCoroutine(FleeCoroutine(onComplete));
         public Coroutine SetMovingState(Action onComplete) => StartCoroutine(MoveCoroutine(onComplete));
+        public Coroutine SetAttackState(Action onComplete) => StartCoroutine(AttackCoroutine(onComplete));
 
         protected IEnumerator MoveCoroutine(Action onComplete)
         {
@@ -134,7 +127,6 @@ namespace BehaviourTree.UnityCore
             onComplete?.Invoke();
             _canMove = false;
         }
-
 
         public bool IsOnCooldown(string key)
         {
