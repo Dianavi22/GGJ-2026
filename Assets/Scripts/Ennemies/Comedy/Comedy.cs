@@ -12,8 +12,6 @@ public class Comedy : CommonBehavior
     private static WaitForSeconds _waitForMilliSeconds1 = new(DANCE_DELAY);
     private static WaitForSeconds _waitBetweenDanceTime = new(DELAY_BEWEEN_DANCES + (DANCE_DELAY * DANCE_ITERATION));
 
-    private int _indexDance = 0;
-
     // Start is called before the first frame update
     protected override void Start()
     {
