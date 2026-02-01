@@ -63,19 +63,6 @@ public class PlayerController : MonoBehaviour
         ActiveMask = mask;
     }
 
-    private void Rotate(Vector3 direction)
-    {
-        if (_lookingBehind)
-        {
-            direction = -direction;
-        }
-      ;
-
-        direction += transform.position;
-        Quaternion targetRotation = Quaternion.LookRotation(direction - transform.position);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _interpolationSpeed);
-    }
-
     private IEnumerator PutYourMaskOn(Masks choosedMask)
     {
         _timer = 0;

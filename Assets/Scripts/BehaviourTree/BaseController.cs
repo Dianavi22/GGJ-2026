@@ -50,7 +50,7 @@ namespace Entities.Enemy
       IsSeen = _playerController.ActiveMask == _weakness && _fov != null && _fov.visibleTargets.Count > 0 && _fov.visibleTargets.Find((target) => target == transform);
 
       if(IsSeen || Input.GetKeyDown(KeyCode.L)) {
-//        StopAllCoroutines();
+        StopAllCoroutines();
         _state = MaskState.feared;
       }
     }
