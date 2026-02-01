@@ -44309,6 +44309,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 309967748}
     - target: {fileID: 8498954856099347435, guid: 0eb87ed171bc2d149ba769bf14142162, type: 3}
+      propertyPath: _spawn
+      value: 
+      objectReference: {fileID: 837222878}
+    - target: {fileID: 8498954856099347435, guid: 0eb87ed171bc2d149ba769bf14142162, type: 3}
       propertyPath: _player
       value: 
       objectReference: {fileID: 266004784}
@@ -50797,6 +50801,10 @@ PrefabInstance:
       propertyPath: fov
       value: 
       objectReference: {fileID: 309967748}
+    - target: {fileID: 9200464450819148821, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
+      propertyPath: _spawn
+      value: 
+      objectReference: {fileID: 1204132990}
     - target: {fileID: 9200464450819148821, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
       propertyPath: _player
       value: 

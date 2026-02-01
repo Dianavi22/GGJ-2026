@@ -20,7 +20,7 @@ namespace BehaviourTree.Leaves
 
       public override float GetBaseWeight()
       {
-        return 1f;
+        return 0.2f;
       }
 
       public override float GetModifiedWeight()
@@ -49,90 +49,11 @@ namespace BehaviourTree.Leaves
 
       public override float GetBaseWeight()
       {
-        return 0.2f;
+        return 0.8f;
       }
 
       public override float GetModifiedWeight()
       {
-        if (_character.AttackMode)
-        {
-          return 100;
-        }
-        float weight = GetBaseWeight();
-
-        return weight;
-      }
-    }
-
-    public class Attack : CoroutineNode
-    {
-      private readonly BaseController _character;
-
-      public Attack(BaseController character)
-      {
-        _character = character;
-      }
-
-      protected override Coroutine StartAction(Action onComplete) => _character.SetAttackState(onComplete);
-
-      public override float GetBaseWeight()
-      {
-        return 0.2f;
-      }
-
-      public override float GetModifiedWeight()
-      {
-        return 0;
-        float weight = GetBaseWeight();
-
-        return weight;
-      }
-    }
-
-    public class IdleAttack : CoroutineNode
-    {
-      private readonly BaseController _character;
-
-      public IdleAttack(BaseController character)
-      {
-        _character = character;
-      }
-
-      protected override Coroutine StartAction(Action onComplete) => _character.SetIdleAttackState(onComplete);
-
-      public override float GetBaseWeight()
-      {
-        return 0.2f;
-      }
-
-      public override float GetModifiedWeight()
-      {
-        return 0;
-        float weight = GetBaseWeight();
-
-        return weight;
-      }
-    }
-
-    public class SwitchTarget : CoroutineNode
-    {
-
-      private readonly BaseController _character;
-
-      public SwitchTarget(BaseController character)
-      {
-        _character = character;
-      }
-      protected override Coroutine StartAction(Action onComplete) => _character.SetSwitchTargetState(onComplete);
-
-      public override float GetBaseWeight()
-      {
-        return 0.2f;
-      }
-
-      public override float GetModifiedWeight()
-      {
-        return _character.IsSeen ? 100 : 0;
         float weight = GetBaseWeight();
 
         return weight;
@@ -140,4 +61,3 @@ namespace BehaviourTree.Leaves
     }
   }
 }
-
