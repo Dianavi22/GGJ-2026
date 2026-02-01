@@ -18,10 +18,10 @@ MonoBehaviour:
     value: 1
   m_FillColor1:
     overrideState: 1
-    value: 1.2
+    value: 0.59
   m_FillColor2:
     overrideState: 1
-    value: -0.58
+    value: 0.03
   m_Contrast:
     overrideState: 1
     value: 0.08
@@ -30,7 +30,7 @@ MonoBehaviour:
     value: 1.11
   m_ScanLinesColor:
     overrideState: 1
-    value: {r: 0.86415094, g: 0.13532923, b: 0.13532923, a: 1}
+    value: {r: 1, g: 1, b: 1, a: 1}
   m_ScanLinesInterval:
     overrideState: 1
     value: 12
