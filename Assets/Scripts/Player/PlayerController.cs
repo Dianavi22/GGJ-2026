@@ -65,7 +65,6 @@ public class PlayerController : MonoBehaviour
 
     private void ChangeMask(Masks mask)
     {
-        Debug.Log("ChangeMask" + mask);
         ActiveMask = mask;
     }
 
