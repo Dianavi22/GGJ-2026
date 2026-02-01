@@ -36,7 +36,7 @@ namespace BehaviourTree.UnityCore
         }
 
         #region Getters
-        public bool IsPlayerInAggroRange => _player != null && Vector3.Distance(transform.position, _player.transform.position) < _aggroRange;
+        public bool IsPlayerInAggroRange => _player != null && _agent != null && _agent.remainingDistance < _aggroRange; 
         public bool AllOnCooldown => _cooldowns.All((e) => 0 < e.Value) && _cooldowns.Count != 0;
         #endregion
 
@@ -51,7 +51,7 @@ namespace BehaviourTree.UnityCore
 
             _agent.updateRotation = false;
             _agent.updateUpAxis = false;
-            _agent.stoppingDistance = _aggroRange * 0.75f;
+            _agent.stoppingDistance = _aggroRange * 0.8f;
         }
 
         protected virtual void Start()
