@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 505228ee1cfef10478d46ae9a95bce4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _aggroRange: 0
+  _aggroRange: 1
   _shouldOverrideTreeEvaluation: 0
   _evaluateTreeOverride: 0
   _showMeleeRangeGizmos: 0
@@ -218,8 +218,8 @@ MonoBehaviour:
   AttackMode: 0
   IsSeen: 0
   _weakness: 0
-  _baseSpeed: 0
-  _fearedSpeed: 0
+  _baseSpeed: 1.5
+  _fearedSpeed: 3
 --- !u!1 &8457269891350583362
 GameObject:
   m_ObjectHideFlags: 0

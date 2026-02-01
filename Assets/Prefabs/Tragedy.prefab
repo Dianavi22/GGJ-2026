@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 301833567720643405}
   - component: {fileID: 409164588231751213}
   - component: {fileID: 9200464450819148821}
+  - component: {fileID: 4041481545449452592}
   m_Layer: 9
   m_Name: Tragedy
   m_TagString: Untagged
@@ -154,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa08e70e41f273d45a5751826fe69fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _aggroRange: 0.5
+  _aggroRange: 2
   _shouldOverrideTreeEvaluation: 0
   _evaluateTreeOverride: 0
   _showMeleeRangeGizmos: 0
@@ -163,8 +164,31 @@ MonoBehaviour:
   AttackMode: 0
   IsSeen: 0
   _weakness: 0
-  _baseSpeed: 3.5
-  _fearedSpeed: 4.5
+  _baseSpeed: 1
+  _fearedSpeed: 2
+--- !u!136 &4041481545449452592
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022835491410812534}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2839834248113962012
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,6 +20,12 @@ public class FieldOfView : MonoBehaviour
         StartCoroutine("FindTargetsWithDelay", .2f);
     }
 
+    private void Update()
+    {
+        var mousePos = Input.mousePosition;
+        var wantedPos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, Camera.main.transform.position.y));
+        transform.LookAt(wantedPos);
+    }
 
     IEnumerator FindTargetsWithDelay(float delay)
     {
