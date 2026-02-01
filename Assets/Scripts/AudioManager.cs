@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -25,15 +26,18 @@ public class AudioManager : MonoBehaviour
     {
 
         AudioClip openSfx = sfx[0];
-        AudioSource mainSfxAudioSource = gameObject.AddComponent<AudioSource>();
-        mainSfxAudioSource.playOnAwake = false;
-        mainSfxAudioSource.clip = openSfx;
-        mainSfxAudioSource.Play();
+        if (openSfx != null)
+        {
+            AudioSource mainSfxAudioSource = gameObject.AddComponent<AudioSource>();
+            mainSfxAudioSource.playOnAwake = false;
+            mainSfxAudioSource.clip = openSfx;
+            mainSfxAudioSource.Play();
+        }
 
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = mainTheme;
         audioSource.loop = true;
-        audioSource.PlayDelayed(openSfx.length - 2);
+        audioSource.PlayDelayed(openSfx != null ? openSfx.length - 2 : 0);
     }
 
     public void PlayButtonSelect()
