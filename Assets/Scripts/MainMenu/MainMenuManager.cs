@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine;
 using Teagher.Rendering.PostProcessEffects;
+using UnityEngine.InputSystem;
+using System.Linq;
+using UnityEngine.InputSystem.Controls;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -73,10 +76,11 @@ public class MainMenuManager : MonoBehaviour
         }
 
         if (_isTransition) { StartCoroutine(TransitionScreenMenu()); }
+
        
         if (_isInMenuButNotMainMenu)
         {
-            if (Input.anyKey) { ShowMainMenu(); }
+            if (Input.anyKey || Input.GetKeyUp(KeyCode.Escape) || Gamepad.current.bButton.isPressed) { ShowMainMenu(); }
         }
     }
 
