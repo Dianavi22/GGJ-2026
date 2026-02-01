@@ -9769,6 +9769,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 748392616197842483, guid: 0eb87ed171bc2d149ba769bf14142162, type: 3}
+      propertyPath: rotationSpeed
+      value: 700
+      objectReference: {fileID: 0}
     - target: {fileID: 2471499203535919590, guid: 0eb87ed171bc2d149ba769bf14142162, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.2
@@ -11435,6 +11439,10 @@ PrefabInstance:
     - target: {fileID: 4041481545449452592, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
       propertyPath: m_Height
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7841460566454650382, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
+      propertyPath: rotationSpeed
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 9200464450819148821, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
       propertyPath: fov

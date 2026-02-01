@@ -21,6 +21,8 @@ namespace Entities.Enemy
     [SerializeField] private float _baseSpeed;
     [SerializeField] private float _fearedSpeed;
 
+    private MaaskExpressons _mask;
+
     protected FieldOfView _fov;
     protected PlayerController _playerController;
 
@@ -30,6 +32,8 @@ namespace Entities.Enemy
     protected override void Awake()
     {
       base.Awake();
+
+      _mask = GetComponentInChildren<MaaskExpressons>();
     }
 
     protected override void Start(){
@@ -46,11 +50,14 @@ namespace Entities.Enemy
 
       _state = IsPlayerInAggroRange ? MaskState.aggroed : MaskState.roaming;
 
+      _mask.isAgro = _state == MaskState.aggroed;
+
       IsSeen = _playerController.ActiveMask == _weakness && _fov != null && _fov.visibleTargets.Count > 0 && _fov.visibleTargets.Find((target) => target == transform);
 
       if(IsSeen || Input.GetKeyDown(KeyCode.L)) {
         StopAllCoroutines();
         StartCoroutine(FleeCoroutine(() => base.ResetRoot()));
+        _mask.isRotating = true;
         _state = MaskState.feared;
       }
     }
@@ -87,6 +94,7 @@ namespace Entities.Enemy
       _canMove = false;
       _target = _player;
       _agent.speed = _baseSpeed;
+      _mask.isRotating = false;
       _state = MaskState.roaming;
     }
     #endregion
