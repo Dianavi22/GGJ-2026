@@ -18,6 +18,8 @@ public class EndMenuManager : MonoBehaviour
     [SerializeField] GameObject  MaskAnim ;
     [SerializeField] GameObject  TextMenu;
 
+    [SerializeField] AudioManager audioManager;
+
     void Start()
     {
         OpenScreenMenu();
@@ -51,6 +53,7 @@ public class EndMenuManager : MonoBehaviour
     {
         if (volume.profile.TryGetSettings(out screenFading))
         {
+            audioManager.PlayTVOffTransition();
             screenFading.blend.value = 0f;
             isFadingClose = true;
         }
@@ -59,16 +62,14 @@ public class EndMenuManager : MonoBehaviour
     public void Menu()
     {
         StartCoroutine(MainMenu());
-        //_cse.StartPlay();
-        //Invoke("MainMenu", 2f);
     }
 
     public IEnumerator MainMenu()
     {
-        StartCoroutine( TransitionScreenMenu());
+        StartCoroutine(TransitionScreenMenu());
         CloseScreenMenu();
-        yield return new WaitForSeconds(0.6f);
 
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("SampleScene");
     }
 
@@ -100,7 +101,7 @@ public class EndMenuManager : MonoBehaviour
 
     public IEnumerator TransitionScreenMenu()
     {
-
+        audioManager.PlayGlitchTransition();
         _glitchEffect.SetActive(true);
         yield return new WaitForSeconds(0.2f);
         _glitchEffect.SetActive(false);
@@ -109,7 +110,6 @@ public class EndMenuManager : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
-
     }
 
 

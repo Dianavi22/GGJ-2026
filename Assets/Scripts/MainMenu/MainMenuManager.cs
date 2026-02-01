@@ -102,7 +102,7 @@ public class MainMenuManager : MonoBehaviour
     public IEnumerator LauchSceneAfterWait()
     {
         yield return new WaitForSeconds(.5f);
-        SceneManager.LoadScene("PlaygroundKF");
+        SceneManager.LoadScene("Main_WithMusic");
     }
 
 
