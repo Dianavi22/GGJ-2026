@@ -9,6 +9,11 @@ public class WallVFX : MonoBehaviour
     [SerializeField] ParticleSystem _sadMaskPart;
     [SerializeField] ScreenShake _ss;
 
+    [SerializeField] GameObject _neutralMask;
+    [SerializeField] GameObject _happyMask;
+    [SerializeField] GameObject _sadMask;
+
+
     public float minValue = 0f;
     public float maxValue = 1f;
     public float speed = 1f;
@@ -66,9 +71,17 @@ public class WallVFX : MonoBehaviour
     private IEnumerator ChangeMaskEffect()
     {
         _glitchEffect.SetActive(true);
-        if (!isRed) { _happyMaskPart.Play(); }
+        yield return new WaitForSeconds(0.2f);
+        if (!isRed) { _happyMaskPart.Play();
+            _neutralMask.SetActive(false);
+            _happyMask.SetActive(true);
+            _sadMask.SetActive(false);
+        }
         else
         {
+            _neutralMask.SetActive(false);
+            _happyMask.SetActive(false);
+            _sadMask.SetActive(true);
             _sadMaskPart.Play();
         }
         yield return new WaitForSeconds(0.2f);
