@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Main_WithMusic.unity
+    guid: 9d6c1b7dc5edd8f42b2d975444736c29
+  - enabled: 1
     path: Assets/Scenes/GameOverSceneVictory.unity
     guid: c439bfd51b47aa44082edcc2de2509b3
   - enabled: 1
@@ -14,13 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOverSceneBlue.unity
     guid: 1c4e8405c7313994a955d7b7c430140f
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PlaygroundKF.unity
     guid: e317c70b6e8b0734e8dee7510247e40c
-  - enabled: 1
-    path: Assets/Scenes/Main_WithMusic.unity
-    guid: 9d6c1b7dc5edd8f42b2d975444736c29
   m_configObjects: {}

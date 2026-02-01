@@ -167,6 +167,7 @@ MonoBehaviour:
   _weakness: 1
   _baseSpeed: 0.5
   _fearedSpeed: 2
+  ending: GameOverSceneBlue
 --- !u!136 &4041481545449452592
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -3,7 +3,6 @@ using System.Collections;
 using BehaviourTree.Core;
 using BehaviourTree.Leaves;
 using BehaviourTree.UnityCore;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,10 +14,16 @@ namespace Entities.Enemy
     {
       // TODO
       _canMove = true;
-      yield return new WaitForSeconds(4f); 
-      onComplete?.Invoke();
+            onComplete?.Invoke();
+
+            yield return new WaitForSeconds(4f); 
       SceneManager.LoadScene("GameOverSceneBlue");
       _canMove = false;
     }
-  }
+
+
+        private void a() { 
+
+        }
+    }
 }

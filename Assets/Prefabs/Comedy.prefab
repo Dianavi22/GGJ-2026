@@ -219,8 +219,9 @@ MonoBehaviour:
   AttackMode: 0
   IsSeen: 0
   _weakness: 0
-  _baseSpeed: 1.5
-  _fearedSpeed: 3
+  _baseSpeed: 0.5
+  _fearedSpeed: 2
+  ending: GameOverSceneRed
 --- !u!82 &8404680129740553418
 AudioSource:
   m_ObjectHideFlags: 0

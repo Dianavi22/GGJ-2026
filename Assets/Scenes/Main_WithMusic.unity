@@ -9856,7 +9856,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2471499203535919590, guid: 0eb87ed171bc2d149ba769bf14142162, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.3
+      value: -0.57
       objectReference: {fileID: 0}
     - target: {fileID: 2471499203535919590, guid: 0eb87ed171bc2d149ba769bf14142162, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11443,7 +11443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1438004922800123177, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.268
+      value: -9.68
       objectReference: {fileID: 0}
     - target: {fileID: 1438004922800123177, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11451,7 +11451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1438004922800123177, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.72
+      value: -12.36
       objectReference: {fileID: 0}
     - target: {fileID: 1438004922800123177, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11491,7 +11491,7 @@ PrefabInstance:
       objectReference: {fileID: 266004784}
     - target: {fileID: 7423768681256482628, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
       propertyPath: MaxDistance
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7423768681256482628, guid: 3d02a28ce0c580944b769e3bc2122505, type: 3}
       propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value

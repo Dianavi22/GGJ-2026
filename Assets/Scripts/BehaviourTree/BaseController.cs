@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using BehaviourTree.Core;
 using BehaviourTree.UnityCore;
-using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.AI;
 using static BehaviourTree.Leaves.BaseTasks;
+using UnityEngine.SceneManagement;
+
 
 namespace Entities.Enemy
 {
@@ -25,18 +26,24 @@ namespace Entities.Enemy
 
     protected FieldOfView _fov;
     protected PlayerController _playerController;
+        public String ending;
 
     protected MaskState _state;
     public MaskState Status => _state;
+
+        private float _elapsed;
 
     protected override void Awake()
     {
       base.Awake();
 
       _mask = GetComponentInChildren<MaaskExpressons>();
+      _agent.speed = _baseSpeed;
     }
 
-    protected override void Start(){
+
+
+        protected override void Start(){
       base.Start(); 
       _fov = _player.GetComponentInChildren<FieldOfView>();
       _playerController = _player.GetComponent<PlayerController>();
@@ -52,11 +59,22 @@ namespace Entities.Enemy
 
       _mask.isAgro = _state == MaskState.aggroed;
 
+            if (_state == MaskState.aggroed) {
+                _elapsed += Time.deltaTime ;
+            } else
+            {
+                _elapsed = 0;
+            }
+
+            if (_elapsed > 2f) {
+                SceneManager.LoadScene(ending);
+            }
+
       IsSeen = _playerController.ActiveMask == _weakness && _fov != null && _fov.visibleTargets.Count > 0 && _fov.visibleTargets.Find((target) => target == transform);
 
-      if(IsSeen || Input.GetKeyDown(KeyCode.L)) {
-        StopAllCoroutines();
-        StartCoroutine(FleeCoroutine(() => base.ResetRoot()));
+        if (IsSeen || Input.GetKeyDown(KeyCode.L)) {
+                //StopAllCoroutines()
+            StartCoroutine(FleeCoroutine(() => base.ResetRoot()));
         _mask.isRotating = true;
         _state = MaskState.feared;
       }
@@ -68,14 +86,17 @@ namespace Entities.Enemy
       Move move = new(this);
       Flee flee = new(this);
       Idle idle = new(this);
-      Attack attack = new(this);
 
-      List<Node> sequences = new() { idle, move, flee , attack};
+            List<Node> sequences = new() { idle, move, flee };
       return new Repeater(new AdvancedSelector(sequences));
     }
-    #endregion
+        #endregion
 
-    #region States Coroutines
+        #region States Coroutines
+        protected override abstract IEnumerator AttackCoroutine(Action onComplete);
+
+
+
     // Idling for random amount of time
     protected override IEnumerator IdleCoroutine(Action onComplete)
     {

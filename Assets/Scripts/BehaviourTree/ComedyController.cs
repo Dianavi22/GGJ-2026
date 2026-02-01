@@ -11,11 +11,13 @@ namespace Entities.Enemy
   {
         protected override IEnumerator AttackCoroutine(Action onComplete)
         {
-            _canMove = true;
-            yield return new WaitForSeconds(4f);
+            yield return null;
             onComplete?.Invoke();
+        }
+
+
+        private void t() {
             SceneManager.LoadScene("GameOverSceneRed");
-            _canMove = false;
         }
     }
 }
