@@ -1,7 +1,8 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SelectButton : MonoBehaviour, ISelectHandler, IDeselectHandler
+public class SelectButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
 {
     [SerializeField] AudioManager _audioManager;
     [SerializeField] PlayButtonPart ButtonParts;
@@ -24,7 +25,18 @@ public class SelectButton : MonoBehaviour, ISelectHandler, IDeselectHandler
     void OnButtonDeselected()
     {
         ButtonParts.DisablePartsButton();
-        _audioManager.ButtonSelect();
+        _audioManager.PlayButtonSelect();
 
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        ButtonParts.ActivePartsButton();
+        _audioManager.PlayButtonSelect();
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        ButtonParts.DisablePartsButton();
     }
 }

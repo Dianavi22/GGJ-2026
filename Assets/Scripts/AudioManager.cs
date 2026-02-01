@@ -36,7 +36,7 @@ public class AudioManager : MonoBehaviour
         audioSource.PlayDelayed(openSfx.length - 2);
     }
 
-    public void ButtonSelect()
+    public void PlayButtonSelect()
     {
         AudioClip buttonSfx = sfx[1];
         audioSource.PlayOneShot(buttonSfx,.4f);
