@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
         // End the party as the player reached the End or he Died.
         // Play Game Over 
 
-        //if enemy that killed us is Crazy Fun
+        //if enemy that killed us is Crazy Fun2
         SceneManager.LoadScene("GameOverSceneRed");
 
         //if enemy that killed us is Sad AF
