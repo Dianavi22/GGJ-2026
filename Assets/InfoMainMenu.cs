@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InfoMainMenu : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class InfoMainMenu : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Gamepad.current.aButton.isPressed)
         {
             StartCoroutine(Glitch());
             ChangeMode();
